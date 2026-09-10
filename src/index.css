@@ -1,0 +1,50 @@
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: #06090f;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#root { min-height: 100vh; }
+
+/* ── Feature 8: keyboard focus states ──────────────────────────────────────
+   Visible on every button, slider, and tab — never removed without a
+   replacement. Color matches the app's existing accent token (#a78bfa). */
+button:focus-visible,
+input[type="range"]:focus-visible,
+[role="tab"]:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ── Feature 8: mobile responsiveness (below 820px) ────────────────────────
+   Two-column panels stack vertically; grids/heatmaps get a horizontal
+   scroll fallback instead of illegibly shrinking. */
+.demo-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 820px) {
+  .demo-two-col {
+    grid-template-columns: 1fr;
+  }
+  .tab-row {
+    flex-wrap: wrap;
+  }
+}
+
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Walkthrough highlight ring — applied to whichever real card the current
+   guided step is pointing at. Uses the app's existing accent color. */
+.walk-highlight {
+  box-shadow: 0 0 0 2px #a78bfa, 0 0 24px rgba(167, 139, 250, 0.35);
+  transition: box-shadow 0.25s ease;
+}
